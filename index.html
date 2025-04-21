@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoT</title>
+    <link rel="icon" href="images/CoT.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Chronicle of Tragedy</h1>
+                <p class="tagline">Documenting Humanity's Darkest Hours</p>
+            </div>
+        </div>
+    </header>
+
+    <nav id="main-navigation">
+        <div class="container">
+            <ul class="main-nav">
+                <li><a href="#" class="active" data-category="all">All Articles</a></li>
+                <li><a href="#" data-category="war">War</a></li>
+                <li><a href="#" data-category="genocide">Genocide</a></li>
+                <li><a href="#" data-category="disaster">Disaster</a></li>
+                <li><a href="#" data-category="pandemic">Pandemic</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="filters">
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="year-filter">Filter by Year</label>
+                    <select id="year-filter">
+                        <option value="all">All Years</option>
+                        <option value="1900-1950">1900-1950</option>
+                        <option value="1951-2000">1951-2000</option>
+                        <option value="pre-1900">Before 1900</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Filter by Tags</label>
+                    <div class="tag-filters">
+                        <button class="tag-btn active" data-tag="all">All</button>
+                        <button class="tag-btn" data-tag="europe">Europe</button>
+                        <button class="tag-btn" data-tag="asia">Asia</button>
+                        <button class="tag-btn" data-tag="americas">Americas</button>
+                        <button class="tag-btn" data-tag="africa">Africa</button>
+                        <button class="tag-btn" data-tag="global">Global</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="articles" id="articles-container">
+            <!-- Articles will be loaded here via JavaScript -->
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CoT. This site documents historical events for educational purposes.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
