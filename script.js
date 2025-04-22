@@ -349,6 +349,8 @@ document.addEventListener('DOMContentLoaded', function() {
     displayArticles();
     handleNavScroll();
     setupLanguageToggle();
+    // Update category counts after filtering
+    updateCategoryCounts();
 
     // Function to initialize language based on saved preference
     function initializeLanguage() {
@@ -364,6 +366,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Update all translatable elements
         updateLanguage();
+        // Update category counts after filtering
+        updateCategoryCounts();
     }
 
     // Add event listeners
@@ -422,6 +426,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             lastScrollPosition = currentScrollPosition;
+            // Update category counts after filtering
+            updateCategoryCounts();
         });
     }
 
@@ -454,6 +460,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             return true;
+
+            // Update category counts after filtering
+            updateCategoryCounts();
         });
         
         // Display filtered articles
@@ -626,6 +635,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 articlesContainer.style.display = 'grid';
                 showArticleDetail(articleId);
             }
+            // Update category counts after filtering
+            updateCategoryCounts();
         });
     }
 
@@ -642,6 +653,38 @@ document.addEventListener('DOMContentLoaded', function() {
             if (translation) {
                 element.textContent = translation;
             }
+        });
+    }
+
+    // Function to update category counts in the navigation
+function updateCategoryCounts() {
+    // Count articles in each category
+    const categoryCounts = {
+        all: articles.length,
+        war: articles.filter(article => article.category === 'war').length,
+        genocide: articles.filter(article => article.category === 'genocide').length,
+        disaster: articles.filter(article => article.category === 'disaster').length,
+        pandemic: articles.filter(article => article.category === 'pandemic').length,
+        terrorism: articles.filter(article => article.category === 'terrorism').length
+    };
+    
+    // Update the navigation links with counts
+        categoryLinks.forEach(link => {
+            const category = link.getAttribute('data-category');
+            const count = categoryCounts[category] || 0;
+            
+            // Create or update the count span
+            let countSpan = link.querySelector('.category-count');
+            if (!countSpan) {
+                countSpan = document.createElement('span');
+                countSpan.className = 'category-count';
+                link.appendChild(countSpan);
+            }
+            
+            // Set the count text with appropriate formatting
+            countSpan.textContent = currentLanguage === 'fa' ? 
+                ` (${count.toLocaleString('fa-IR')})` : 
+                ` (${count})`;
         });
     }
 
