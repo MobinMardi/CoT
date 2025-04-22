@@ -305,6 +305,22 @@ html[dir="rtl"] #year-filter {
   letter-spacing: 0.5px;
 }
 
+/* Add these styles for the category count */
+.category-count {
+  display: inline-block;
+  font-size: 0.85em;
+  opacity: 0.8;
+  font-weight: normal;
+}
+
+html[dir="rtl"] .category-count {
+  margin-right: 4px;
+}
+
+html[dir="ltr"] .category-count {
+  margin-left: 4px;
+}
+
 html[dir="rtl"] .category {
   letter-spacing: normal;
 }
